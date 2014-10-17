@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:m="tapestry-library:mongo">
+	<head>
+		<title>Tapestry Mongo Demo</title>
+	</head>
+	<body>
+		<t:loop t:source="collectionNames" t:value="var:collection">
+			${var:collection}
+		</t:loop>
+		<m:MongoTextField/>
+	</body>
+</html>
