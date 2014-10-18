@@ -1,7 +1,5 @@
 package org.arnolf.demo.tapestry.mongo.pages;
 
-import java.util.Set;
-
 import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Persist;
 import org.apache.tapestry5.annotations.Property;
@@ -19,15 +17,11 @@ public class Index {
 	private MongoConnection mongoConnection;
 	
 	@Property
-	private Set<String> collectionNames;
-	
-	@Property
 	@Persist
 	private DBObject document;
 	
 	@SetupRender
 	public void init() {
-		this.collectionNames = mongoConnection.getDB().getCollectionNames();
 		this.document = new BasicDBObject();
 	}
 	
