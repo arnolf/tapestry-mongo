@@ -21,11 +21,21 @@ public class Index {
 	@Persist
 	private DBObject document;
 	
+	private long userId;
+	
+	public void onActivate(long userId) {
+		this.userId = userId;
+	}
+	
+	public long onPassivate() {
+		return this.userId;
+	}
+	
 	@SetupRender
 	public void init() {
 		DB db = this.mongoConnection.getDB();
 		this.document = db.getCollection("person").
-				findAndModify(new BasicDBObject("_id", 3), null, null, false, new BasicDBObject("$set", new BasicDBObject("_id", 3)), true, true);
+				findAndModify(new BasicDBObject("_id", userId), null, null, false, new BasicDBObject("$set", new BasicDBObject("_id", userId)), true, true);
 	}
 	
 	public void onSubmit() {
