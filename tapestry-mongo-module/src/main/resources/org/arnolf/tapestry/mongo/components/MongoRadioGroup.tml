@@ -1,0 +1,5 @@
+<t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
+ 	<t:radioGroup t:id="mongoField" t:value="value" t:validate="prop:validate">
+ 		<t:body/>
+ 	</t:radioGroup>
+</t:container>
