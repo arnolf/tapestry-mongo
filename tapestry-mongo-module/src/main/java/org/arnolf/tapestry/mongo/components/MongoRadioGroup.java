@@ -17,8 +17,19 @@ public class MongoRadioGroup extends AbstractMongoField {
 	@Parameter(allowNull = false, required = true, defaultPrefix = BindingConstants.LITERAL)
 	private String validate;
 	
+	@Parameter(name = "default", allowNull = false, required = false, defaultPrefix = BindingConstants.LITERAL)
+	private String defaultValue;
+	
 	@Inject
 	private FieldValidatorSource fieldValidatorSource;
+	
+	public Object getValue() {
+		Object result = super.getValue();
+		if (defaultValue != null && result == null) {
+			result = defaultValue;
+		}
+		return result;
+	}
 	
 	public FieldValidator<?> getValidate() {
 		return fieldValidatorSource.createValidators(mongoField, validate);

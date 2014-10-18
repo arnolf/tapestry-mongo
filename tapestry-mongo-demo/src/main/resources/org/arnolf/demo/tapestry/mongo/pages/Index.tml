@@ -68,7 +68,7 @@
 						<m:mongoLabel t:for="card"/>
 					</div>
 					<div class="col-md-6">
-						<m:MongoRadioGroup t:id="card" t:label="card" 
+						<m:MongoRadioGroup t:id="card" t:label="card" t:default="VISA"
 							t:document="document"  t:validate="required" t:property="account.card">
 							<div class="radio-inline">
 								<t:Radio t:id="visa" value="literal:VISA"/>
