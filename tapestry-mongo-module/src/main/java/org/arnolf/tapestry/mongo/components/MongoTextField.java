@@ -14,7 +14,7 @@ import org.apache.tapestry5.services.FieldValidatorSource;
 
 public class MongoTextField extends AbstractMongoField {
 
-	@Component(id = "mongoField", publishParameters = "disabled,label,clientId")
+	@Component(id = "mongoField", inheritInformalParameters = true, publishParameters = "disabled,label,clientId")
 	private TextField mongoField;
 	
 	@Inject

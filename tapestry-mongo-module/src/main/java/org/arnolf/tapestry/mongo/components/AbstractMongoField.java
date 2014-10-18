@@ -3,11 +3,13 @@ package org.arnolf.tapestry.mongo.components;
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Field;
 import org.apache.tapestry5.annotations.Parameter;
+import org.apache.tapestry5.annotations.SupportsInformalParameters;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.arnolf.tapestry.mongo.services.MongoService;
 
 import com.mongodb.DBObject;
 
+@SupportsInformalParameters
 public abstract class AbstractMongoField {
 
 	@Parameter(allowNull = false, required = true)
