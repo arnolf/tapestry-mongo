@@ -24,13 +24,12 @@ public class Index {
 	@SetupRender
 	public void init() {
 		DB db = this.mongoConnection.getDB();
-		this.document = db.getCollection("person").findOne(new BasicDBObject("id", 12432));
-		if (this.document == null) {
-			this.document = new BasicDBObject("id", 12432);
-		}
+		this.document = db.getCollection("person").
+				findAndModify(new BasicDBObject("_id", 3), null, null, false, new BasicDBObject("$set", new BasicDBObject("_id", 3)), true, true);
 	}
 	
 	public void onSubmit() {
+		System.out.println(document);
 		this.mongoConnection.getDB().getCollection("person").save(document);
 	}
 }
