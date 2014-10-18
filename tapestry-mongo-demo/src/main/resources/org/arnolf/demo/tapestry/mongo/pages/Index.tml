@@ -8,8 +8,14 @@
 			${var:collection}
 		</t:loop>
 		<t:form>
-			<m:mongoLabel t:for="name"/>
-			<m:MongoTextField t:id="name" t:label="name : " t:document="document" t:translate="integer" t:validate="required" t:property="user.name"/>
+			<div>
+				<m:mongoLabel t:for="name"/>
+				<m:MongoTextField t:id="name" t:label="Name : " t:document="document" t:translate="integer" t:validate="required" t:property="user.name"/>
+			</div>
+			<div>
+				<m:mongoLabel t:for="comments"/>
+				<m:MongoTextArea t:id="comments" t:label="Comments : " t:document="document" t:translate="string" t:validate="required" t:property="user.comments"/>
+			</div>
 			<t:linkSubmit>Valider</t:linkSubmit>
 		</t:form>
 	</body>
