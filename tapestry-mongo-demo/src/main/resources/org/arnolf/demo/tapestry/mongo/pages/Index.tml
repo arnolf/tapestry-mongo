@@ -24,7 +24,16 @@
 					</div>
 					<div class="col-md-6">
 						<m:MongoTextField class="form-control" autocomplete="off" t:id="name" t:label="Name" 
-							t:document="document" t:translate="integer" t:validate="required" t:property="user.name"/>
+							t:document="document" t:translate="string" t:validate="required" t:property="user.name"/>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<m:mongoLabel t:for="age"/>
+					</div>
+					<div class="col-md-6">
+						<m:MongoTextField class="form-control" autocomplete="off" t:id="age" t:label="Age" 
+							t:document="document" t:translate="integer" t:validate="required" t:property="user.age"/>
 					</div>
 				</div>
 				<div class="row">			
@@ -47,20 +56,20 @@
 				</div>
 				<div class="row">			
 					<div class="col-md-6">
-						<m:mongoLabel t:for="country"/>
-					</div>
-					<div class="col-md-6">
-						<m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country" t:model="literal:FR=france,IT=italy"
-							t:document="document" t:validate="none" t:property="country"/>
-					</div>
-				</div>
-				<div class="row">			
-					<div class="col-md-6">
 						<m:mongoLabel t:for="moto"/>
 					</div>
 					<div class="col-md-6">
 						<m:MongoCheckbox autocomplete="off" t:id="moto" t:label="moto" 
 							t:document="document" t:property="user.moto"/>
+					</div>
+				</div>
+				<div class="row">			
+					<div class="col-md-6">
+						<m:mongoLabel t:for="country"/>
+					</div>
+					<div class="col-md-6">
+						<m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country" t:model="literal:FR=france,IT=italy"
+							t:document="document" t:validate="none" t:property="country"/>
 					</div>
 				</div>
 				<div class="row">			
@@ -71,11 +80,11 @@
 						<m:MongoRadioGroup t:id="card" t:label="card" t:default="VISA"
 							t:document="document"  t:validate="required" t:property="account.card">
 							<div class="radio-inline">
-								<t:Radio t:id="visa" value="literal:VISA"/>
+								<t:Radio t:id="visa" value="literal:visa"/>
 								<t:label  t:for="visa"/>
 							</div>
 							<div class="radio-inline">
-								<t:Radio t:id="amex" value="literal:AMEX"/>
+								<t:Radio t:id="amex" value="literal:amex"/>
 								<t:label  t:for="amex"/>
 							</div>
 						</m:MongoRadioGroup>
