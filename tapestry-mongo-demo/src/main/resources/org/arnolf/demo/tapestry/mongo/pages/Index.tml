@@ -47,6 +47,15 @@
 				</div>
 				<div class="row">			
 					<div class="col-md-6">
+						<m:mongoLabel t:for="country"/>
+					</div>
+					<div class="col-md-6">
+						<m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country" t:model="literal:FR=france,IT=italy"
+							t:document="document" t:validate="none" t:property="country"/>
+					</div>
+				</div>
+				<div class="row">			
+					<div class="col-md-6">
 						<m:mongoLabel t:for="moto"/>
 					</div>
 					<div class="col-md-6">
