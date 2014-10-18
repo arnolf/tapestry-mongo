@@ -30,7 +30,6 @@ public class MongoConnectionImpl implements MongoConnection {
 		if (readPreference != null) {
 			mongo.setReadPreference(ReadPreference.valueOf(readPreference));
 		}
-		System.out.println(mongo.getMongoClientOptions());
 		this.db = mongo.getDB(db);
 	}
 	

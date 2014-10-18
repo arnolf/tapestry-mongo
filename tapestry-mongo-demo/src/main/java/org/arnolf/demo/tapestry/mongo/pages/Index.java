@@ -29,7 +29,6 @@ public class Index {
 	}
 	
 	public void onSubmit() {
-		System.out.println(document);
 		this.mongoConnection.getDB().getCollection("person").save(document);
 	}
 }
