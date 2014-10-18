@@ -1,13 +1,14 @@
 package org.arnolf.tapestry.mongo.components;
 
 import org.apache.tapestry5.BindingConstants;
+import org.apache.tapestry5.Field;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.ioc.annotations.Inject;
 import org.arnolf.tapestry.mongo.services.MongoService;
 
 import com.mongodb.DBObject;
 
-public class AbstractMongoField {
+public abstract class AbstractMongoField {
 
 	@Parameter(allowNull = false, required = true)
 	private DBObject document;
@@ -25,4 +26,6 @@ public class AbstractMongoField {
 	public void setValue(Object value) {
 		mongoService.addProperty(document, property, value);
 	}
+	
+	public abstract Field getField();
 }

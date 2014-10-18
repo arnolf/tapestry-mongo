@@ -2,6 +2,7 @@ package org.arnolf.tapestry.mongo.components;
 
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.ComponentResources;
+import org.apache.tapestry5.Field;
 import org.apache.tapestry5.FieldTranslator;
 import org.apache.tapestry5.FieldValidator;
 import org.apache.tapestry5.annotations.Component;
@@ -13,7 +14,7 @@ import org.apache.tapestry5.services.FieldValidatorSource;
 
 public class MongoTextField extends AbstractMongoField {
 
-	@Component(id = "mongoField", publishParameters = "disabled")
+	@Component(id = "mongoField", publishParameters = "disabled,label,clientId")
 	private TextField mongoField;
 	
 	@Inject
@@ -37,5 +38,10 @@ public class MongoTextField extends AbstractMongoField {
 	
 	public FieldValidator<?> getValidate() {
 		return fieldValidatorSource.createValidators(mongoField, validate);
+	}
+
+	@Override
+	public Field getField() {
+		return this.mongoField;
 	}
 }
