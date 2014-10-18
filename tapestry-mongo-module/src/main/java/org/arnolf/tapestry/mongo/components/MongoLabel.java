@@ -9,6 +9,9 @@ public class MongoLabel {
     @Parameter(name = "for", required = true, allowNull = false, defaultPrefix = BindingConstants.COMPONENT)
     private AbstractMongoField field;
     
+    @Parameter
+    private boolean ignoreBody;
+    
     public Field getField() {
     	return field.getField();
     }

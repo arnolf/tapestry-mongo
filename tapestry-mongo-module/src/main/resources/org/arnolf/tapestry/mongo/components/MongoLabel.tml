@@ -1,5 +1,5 @@
 <t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
- 	<t:label t:for="prop:field">
+ 	<t:label t:for="prop:field" t:ignoreBody="inherit:ignoreBody">
  		<t:body/>
  	</t:label>
 </t:container>
