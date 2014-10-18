@@ -36,6 +36,25 @@
 							t:document="document" t:translate="string" t:validate="required" t:property="user.comments"/>
 					</div>
 				</div>
+				<div class="row">			
+					<div class="col-md-6">
+						<m:mongoLabel t:for="car"/>
+					</div>
+					<div class="col-md-6">
+						<m:MongoCheckbox class="form-control" autocomplete="off" t:id="car" t:label="car" 
+							t:document="document" t:translate="string" t:validate="required" t:property="user.car"/>
+					</div>
+				</div>
+				<div class="row">			
+					<div class="col-md-6">
+						<m:mongoLabel t:for="moto"/>
+					</div>
+					<div class="col-md-6">
+						<m:MongoCheckbox class="form-control" autocomplete="off" t:id="moto" t:label="moto" 
+							t:document="document" t:translate="string" t:validate="required" t:property="user.moto"/>
+					</div>
+				</div>
+				
 				<div class="row">
 					<div class="col-md-12">
 						<t:submit class="btn btn-default"/>
