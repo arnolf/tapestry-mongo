@@ -24,16 +24,18 @@ Components
 
 ###MongoTextArea
 
-        <m:MongoTextArea class="form-control" autocomplete="off" t:id="comments" t:label="Comments"
+        <m:MongoTextArea t:id="comments" t:label="Comments"
                 t:document="document" t:translate="string" t:validate="required" t:property="user.comments"/>
      
 ###MongoSelect
 
-        <m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country"                                     t:model="literal:FR=france,IT=italy"
-                :document="document" t:validate="none" t:property="country"/>
+        <m:MongoSelect t:id="country" t:label="country" t:blankLabel="country"                                                          t:model="literal:FR=france,IT=italy"
+                t:document="document" t:validate="none" t:property="country"/>
 
 ###MongoCheckbox
 
+        <m:MongoCheckbox t:id="car" t:label="car"
+                t:document="document" t:property="user.car"/>
 
 ###MongoRadioGroup
 
