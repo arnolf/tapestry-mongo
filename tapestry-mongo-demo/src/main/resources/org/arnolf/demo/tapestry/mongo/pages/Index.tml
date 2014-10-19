@@ -53,11 +53,11 @@
 						<m:MongoRadioGroup t:id="gender" t:label="Gender" t:default="FEMALE"
 							t:document="document"  t:validate="required" t:property="user.gender">
 							<div class="radio-inline">
-								<t:Radio t:id="men" value="literal:MALE" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress" t:invert="true"/>
+								<t:Radio t:id="men" value="literal:MALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment" t:invert="true"/>
 								<t:label  t:for="men"/>
 							</div>
 							<div class="radio-inline">
-								<t:Radio t:id="female" value="literal:FEMALE" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress"/>
+								<t:Radio t:id="female" value="literal:FEMALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment"/>
 								<t:label  t:for="female"/>
 							</div>
 						</m:MongoRadioGroup>
@@ -65,7 +65,7 @@
 				</div>
 				
 				<div class="row">
-					<m:mongoformfragment class="row" t:id="seperateShippingAddress" t:document="document" t:property="user.gender" t:visible="[null,'FEMALE']">
+					<m:mongoformfragment class="row" t:id="maidenNameFragment" t:document="document" t:property="user.gender" t:visible="[null,'FEMALE']">
 						<div class="col-md-6">
 							<m:mongoLabel t:for="maidenName"/>
 						</div>
