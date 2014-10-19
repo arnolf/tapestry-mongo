@@ -47,11 +47,52 @@
 				</div>
 				<div class="row">			
 					<div class="col-md-6">
+						<m:mongoLabel t:for="gender"/>
+					</div>
+					<div class="col-md-6">
+						<m:MongoRadioGroup t:id="gender" t:label="Gender" t:default="FEMALE"
+							t:document="document"  t:validate="required" t:property="user.gender">
+							<div class="radio-inline">
+								<t:Radio t:id="men" value="literal:MALE" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress" t:invert="true"/>
+								<t:label  t:for="men"/>
+							</div>
+							<div class="radio-inline">
+								<t:Radio t:id="female" value="literal:FEMALE" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress"/>
+								<t:label  t:for="female"/>
+							</div>
+						</m:MongoRadioGroup>
+					</div>
+				</div>
+				
+				<div class="row">
+					<m:mongoformfragment class="row" t:id="seperateShippingAddress" t:document="document" t:property="user.gender" t:visible="[null,'FEMALE']">
+						<div class="col-md-6">
+							<m:mongoLabel t:for="maidenName"/>
+						</div>
+						<div class="col-md-6">
+							<m:MongoTextField class="form-control" autocomplete="off" t:id="maidenName" t:label="Maiden name" 
+								t:document="document" t:translate="string" t:validate="required" t:property="user.maidenName"/>
+						</div>
+					 </m:mongoformfragment>
+				</div>
+				
+				<div class="row">			
+					<div class="col-md-6">
+						<m:mongoLabel t:for="country"/>
+					</div>
+					<div class="col-md-6">
+						<m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country" t:model="literal:FR=france,IT=italy"
+							t:document="document" t:validate="none" t:property="address.country"/>
+					</div>
+				</div>
+				
+				<div class="row">			
+					<div class="col-md-6">
 						<m:mongoLabel t:for="car"/>
 					</div>
 					<div class="col-md-6">
-						<m:MongoCheckbox autocomplete="off" t:id="car" t:label="car" 
-							t:document="document" t:property="user.car"/>
+						<m:MongoCheckbox t:id="car" t:label="car" 
+							t:document="document" t:property="car"/>
 					</div>
 				</div>
 				<div class="row">			
@@ -59,48 +100,9 @@
 						<m:mongoLabel t:for="moto"/>
 					</div>
 					<div class="col-md-6">
-						<m:MongoCheckbox autocomplete="off" t:id="moto" t:label="moto" 
-							t:document="document" t:property="user.moto"/>
+						<m:MongoCheckbox t:id="moto" t:label="moto" 
+							t:document="document" t:property="moto"/>
 					</div>
-				</div>
-				<div class="row">			
-					<div class="col-md-6">
-						<m:mongoLabel t:for="country"/>
-					</div>
-					<div class="col-md-6">
-						<m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country" t:model="literal:FR=france,IT=italy"
-							t:document="document" t:validate="none" t:property="country"/>
-					</div>
-				</div>
-				<div class="row">			
-					<div class="col-md-6">
-						<m:mongoLabel t:for="card"/>
-					</div>
-					<div class="col-md-6">
-						<m:MongoRadioGroup t:id="card" t:label="card" t:default="VISA"
-							t:document="document"  t:validate="required" t:property="account.card">
-							<div class="radio-inline">
-								<t:Radio t:id="visa" value="literal:VISA" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress"/>
-								<t:label  t:for="visa"/>
-							</div>
-							<div class="radio-inline">
-								<t:Radio t:id="amex" value="literal:AMEX" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress" t:invert="true"/>
-								<t:label  t:for="amex"/>
-							</div>
-						</m:MongoRadioGroup>
-					</div>
-				</div>
-				
-				<div class="row">
-					<m:mongoformfragment class="row" t:id="seperateShippingAddress" t:document="document" t:property="account.card" t:visible="[null,'VISA']">
-						<div class="col-md-6">
-							<m:mongoLabel t:for="expiration"/>
-						</div>
-						<div class="col-md-6">
-							<m:MongoTextField class="form-control" autocomplete="off" t:id="expiration" t:label="expiration" 
-								t:document="document" t:translate="string" t:validate="required" t:property="account.expiration"/>
-						</div>
-					 </m:mongoformfragment>
 				</div>
 				
 				<div class="row">
