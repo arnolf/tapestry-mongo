@@ -45,7 +45,10 @@ Components
         </m:MongoRadioGroup>
 
 ###MongoLabel
-
+	
+	<m:mongoLabel t:for="age"/>
+        <m:MongoTextField class="form-control" autocomplete="off" t:id="age" t:label="Age"
+                t:document="document" t:translate="integer" t:validate="required" t:property="user.age"/>
 
 ###MongoFormFragment
 
@@ -53,3 +56,7 @@ Mixins
 =============
 
 ###MongoTriggerFragment
+
+	<m:mongoformfragment class="row" t:id="maidenNameFragment" t:document="document" t:property="user.gender" 			t:visible="[null,'FEMALE']"/>
+	
+	</m:mongoformfragment>
