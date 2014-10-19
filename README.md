@@ -52,11 +52,17 @@ Components
 
 ###MongoFormFragment
 
+To use with MongoTriggerFragmentMixin
+
+	<m:mongoformfragment class="row" t:id="maidenNameFragment" t:document="document" t:property="user.gender" t:visible="[null,'FEMALE']"/>
+		[...other fields...]
+	</m:mongoformfragment>
+
+
+
 Mixins
 =============
 
 ###MongoTriggerFragment
 
-	<m:mongoformfragment class="row" t:id="maidenNameFragment" t:document="document" t:property="user.gender" 			t:visible="[null,'FEMALE']"/>
-	
-	</m:mongoformfragment>
+	<t:Radio autocomplete="off" t:id="men" value="literal:MALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment" t:invert="true"/>
