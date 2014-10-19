@@ -92,7 +92,7 @@
 				</div>
 				
 				<div class="row">
-					<m:mongoformfragment class="row" t:id="seperateShippingAddress" t:document="document" t:property="account.card" t:visible="'VISA'">
+					<m:mongoformfragment class="row" t:id="seperateShippingAddress" t:document="document" t:property="account.card" t:visible="[null,'VISA']">
 						<div class="col-md-6">
 							<m:mongoLabel t:for="expiration"/>
 						</div>

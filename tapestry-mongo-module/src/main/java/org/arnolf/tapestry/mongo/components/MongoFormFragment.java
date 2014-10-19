@@ -1,5 +1,7 @@
 package org.arnolf.tapestry.mongo.components;
 
+import java.util.List;
+
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.annotations.Component;
 import org.apache.tapestry5.annotations.Import;
@@ -20,7 +22,7 @@ public class MongoFormFragment {
 	private String property;
 	
 	@Parameter(allowNull = false, required = true, defaultPrefix = BindingConstants.PROP)
-	private String visible;
+	private List<Object> visible;
 	
 	@Parameter(allowNull = false, required = true)
 	private DBObject document;
@@ -30,11 +32,7 @@ public class MongoFormFragment {
 	
 	public Object getVisible() {
 		Object result = mongoService.getProperty(document, property);
-		if (result != null) {
-			return result.equals(visible);
-		} else {
-			return result;
-		}
+		return visible.contains(result);
 	}
 	
 	public FormFragment getFragment() {
