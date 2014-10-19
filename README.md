@@ -40,8 +40,8 @@ Components
 ###MongoRadioGroup
         
         <m:MongoRadioGroup t:id="gender" t:label="Gender" t:default="FEMALE" t:document="document" t:validate="required" t:property="user.gender">
-		<t:Radio autocomplete="off" t:id="men" value="literal:MALE"/>
-		<t:Radio autocomplete="off" t:id="female" value="literal:FEMALE"/>
+			<t:Radio autocomplete="off" t:id="men" value="literal:MALE"/>
+			<t:Radio autocomplete="off" t:id="female" value="literal:FEMALE"/>
         </m:MongoRadioGroup>
 
 ###MongoLabel
