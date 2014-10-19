@@ -65,4 +65,6 @@ Mixins
 
 ###MongoTriggerFragment
 
+	<t:Radio autocomplete="off" t:id="female" value="literal:FEMALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment"/>
+
 	<t:Radio autocomplete="off" t:id="men" value="literal:MALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment" t:invert="true"/>
