@@ -2,6 +2,7 @@ package org.arnolf.tapestry.mongo.components;
 
 import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.annotations.Component;
+import org.apache.tapestry5.annotations.Import;
 import org.apache.tapestry5.annotations.Parameter;
 import org.apache.tapestry5.corelib.components.FormFragment;
 import org.apache.tapestry5.ioc.annotations.Inject;
@@ -9,9 +10,10 @@ import org.arnolf.tapestry.mongo.services.MongoService;
 
 import com.mongodb.DBObject;
 
+@Import(library = "classpath:org/arnolf/tapestry/mongo/components/MongoFormFragment.js")
 public class MongoFormFragment {
 
-	@Component(id = "fragment", inheritInformalParameters = true, publishParameters = "alwaysSubmit,element,hide,show,visibleBound")
+	@Component(id = "fragment", inheritInformalParameters = true, publishParameters = "alwaysSubmit,element,visibleBound")
 	private FormFragment fragment;
 	
 	@Parameter(allowNull = false, required = true, defaultPrefix = BindingConstants.LITERAL)
