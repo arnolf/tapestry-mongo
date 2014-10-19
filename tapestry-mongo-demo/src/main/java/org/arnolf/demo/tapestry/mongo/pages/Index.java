@@ -21,6 +21,9 @@ public class Index {
 	@Persist
 	private DBObject document;
 	
+	@Property
+	private boolean separateShipTo;
+	
 	private long userId;
 	
 	public void onActivate(long userId) {

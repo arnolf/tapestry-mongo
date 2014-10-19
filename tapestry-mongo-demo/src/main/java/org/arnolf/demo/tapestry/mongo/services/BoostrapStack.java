@@ -25,6 +25,8 @@ public class BoostrapStack implements JavaScriptStack {
 	@Override
 	public List<Asset> getJavaScriptLibraries() {
 		List<Asset> ret = new ArrayList<Asset>(); 
+	    ret.add(assetSource.getContextAsset("context:js/jquery-2.1.1.min.js", null));
+	    ret.add(assetSource.getContextAsset("context:js/jquery-no-conflict.js", null));
 	    ret.add(assetSource.getContextAsset("context:bootstrap/js/bootstrap.min.js", null));
 	    return ret;
 	}

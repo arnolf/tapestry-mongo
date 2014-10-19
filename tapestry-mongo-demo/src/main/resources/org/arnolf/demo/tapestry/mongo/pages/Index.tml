@@ -80,16 +80,20 @@
 						<m:MongoRadioGroup t:id="card" t:label="card" t:default="VISA"
 							t:document="document"  t:validate="required" t:property="account.card">
 							<div class="radio-inline">
-								<t:Radio t:id="visa" value="literal:VISA"/>
+								<t:Radio t:id="visa" value="literal:VISA" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress"/>
 								<t:label  t:for="visa"/>
 							</div>
 							<div class="radio-inline">
-								<t:Radio t:id="amex" value="literal:AMEX"/>
+								<t:Radio t:id="amex" value="literal:AMEX" t:mixins="mongo/mongotriggerfragment" t:fragment="seperateShippingAddress" t:invert="true"/>
 								<t:label  t:for="amex"/>
 							</div>
 						</m:MongoRadioGroup>
 					</div>
 				</div>
+				
+				 <m:mongoformfragment t:id="seperateShippingAddress" t:document="document" t:property="account.card" t:visible="'VISA'">
+				 	aaa
+				 </m:mongoformfragment>
 				
 				<div class="row">
 					<div class="col-md-12">
