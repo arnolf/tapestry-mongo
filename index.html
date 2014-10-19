@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Tapestry-mongo by arnolf</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Tapestry-mongo</h1>
+        <p>Tapestry5 mongo components</p>
+        <p class="view"><a href="https://github.com/arnolf/tapestry-mongo">View the Project on GitHub <small>arnolf/tapestry-mongo</small></a></p>
+        <ul>
+          <li><a href="https://github.com/arnolf/tapestry-mongo/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/arnolf/tapestry-mongo/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/arnolf/tapestry-mongo">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h1>
+<a name="tapestry-mongo" class="anchor" href="#tapestry-mongo"><span class="octicon octicon-link"></span></a>tapestry-mongo</h1>
+
+<p>Tapestry5 form components with Mongo storage.</p>
+
+<h1>
+<a name="setup" class="anchor" href="#setup"><span class="octicon octicon-link"></span></a>Setup</h1>
+
+<p>In your AppModule, configure Mongo connection with symbols :</p>
+
+<pre><code>    public static void contributeApplicationDefaults(MappedConfiguration&lt;String, String&gt; configuration) {
+            configuration.add(MongoSymbolConstants.MONGO_DB, "test");
+            configuration.add(MongoSymbolConstants.MONGO_HOSTS, "localhost:27017");
+            configuration.add(MongoSymbolConstants.READ_PREFERENCE, ReadPreference.primaryPreferred().toString());
+    }
+</code></pre>
+
+<h1>
+<a name="demo" class="anchor" href="#demo"><span class="octicon octicon-link"></span></a>Demo</h1>
+
+<p>See Index.java and Index.tml in tapestry-mongo-demo (use Servlet container such as Tomcat). </p>
+
+<p>http://localhost:8080/tapestry-mongo-demo/{id} (where {id} is a number)</p>
+
+<p>The form will create a document for example :</p>
+
+<p>{ "_id" : NumberLong(22), "user" : { "name" : "john", "age" : 22, "comments" : "nothing", "gender" : "MALE", "car" : true, "moto" : false }, "address" : { "country" : "FR" } }</p>
+
+<h1>
+<a name="components" class="anchor" href="#components"><span class="octicon octicon-link"></span></a>Components</h1>
+
+<h3>
+<a name="mongotextfield" class="anchor" href="#mongotextfield"><span class="octicon octicon-link"></span></a>MongoTextField</h3>
+
+<pre><code>    &lt;m:MongoTextField class="form-control" autocomplete="off" t:id="age" t:label="Age"
+            t:document="document" t:translate="integer" t:validate="required" t:property="user.age"/&gt;
+</code></pre>
+
+<h3>
+<a name="mongotextarea" class="anchor" href="#mongotextarea"><span class="octicon octicon-link"></span></a>MongoTextArea</h3>
+
+<pre><code>    &lt;m:MongoTextArea t:id="comments" t:label="Comments"
+            t:document="document" t:translate="string" t:validate="required" t:property="user.comments"/&gt;
+</code></pre>
+
+<h3>
+<a name="mongoselect" class="anchor" href="#mongoselect"><span class="octicon octicon-link"></span></a>MongoSelect</h3>
+
+<pre><code>    &lt;m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country"                                     t:model="literal:FR=france,IT=italy"
+            t:document="document" t:validate="none" t:property="address.country"/&gt;
+</code></pre>
+
+<h3>
+<a name="mongocheckbox" class="anchor" href="#mongocheckbox"><span class="octicon octicon-link"></span></a>MongoCheckbox</h3>
+
+<pre><code>    &lt;m:MongoCheckbox t:id="car" t:label="car"
+            t:document="document" t:property="car"/&gt;
+</code></pre>
+
+<h3>
+<a name="mongoradiogroup" class="anchor" href="#mongoradiogroup"><span class="octicon octicon-link"></span></a>MongoRadioGroup</h3>
+
+<pre><code>    &lt;m:MongoRadioGroup t:id="gender" t:label="Gender" t:default="FEMALE" t:document="document" t:validate="required" t:property="user.gender"&gt;
+        &lt;t:Radio autocomplete="off" t:id="men" value="literal:MALE"/&gt;
+        &lt;t:Radio autocomplete="off" t:id="female" value="literal:FEMALE"/&gt;
+    &lt;/m:MongoRadioGroup&gt;
+</code></pre>
+
+<h3>
+<a name="mongolabel" class="anchor" href="#mongolabel"><span class="octicon octicon-link"></span></a>MongoLabel</h3>
+
+<pre><code>&lt;m:mongoLabel t:for="age"/&gt;
+    &lt;m:MongoTextField class="form-control" autocomplete="off" t:id="age" t:label="Age"
+            t:document="document" t:translate="integer" t:validate="required" t:property="user.age"/&gt;
+</code></pre>
+
+<h3>
+<a name="mongoformfragment" class="anchor" href="#mongoformfragment"><span class="octicon octicon-link"></span></a>MongoFormFragment</h3>
+
+<p>To use with MongoTriggerFragmentMixin</p>
+
+<pre><code>&lt;m:mongoformfragment class="row" t:id="maidenNameFragment" t:document="document" t:property="user.gender" t:visible="[null,'FEMALE']"/&gt;
+    [...other fields...]
+&lt;/m:mongoformfragment&gt;
+</code></pre>
+
+<h1>
+<a name="mixins" class="anchor" href="#mixins"><span class="octicon octicon-link"></span></a>Mixins</h1>
+
+<h3>
+<a name="mongotriggerfragment" class="anchor" href="#mongotriggerfragment"><span class="octicon octicon-link"></span></a>MongoTriggerFragment</h3>
+
+<pre><code>&lt;t:Radio autocomplete="off" t:id="female" value="literal:FEMALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment"/&gt;
+
+&lt;t:Radio autocomplete="off" t:id="men" value="literal:MALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment" t:invert="true"/&gt;
+</code></pre>
+      </section>
+    </div>
+    <footer>
+      <p>Project maintained by <a href="https://github.com/arnolf">arnolf</a></p>
+      <p>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></p>
+    </footer>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
