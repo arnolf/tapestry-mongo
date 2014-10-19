@@ -29,7 +29,12 @@ public class MongoFormFragment {
 	private MongoService mongoService;
 	
 	public Object getVisible() {
-		return mongoService.getProperty(document, property).equals(visible);
+		Object result = mongoService.getProperty(document, property);
+		if (result != null) {
+			return result.equals(visible);
+		} else {
+			return result;
+		}
 	}
 	
 	public FormFragment getFragment() {
