@@ -18,7 +18,14 @@ In your AppModule, configure Mongo connection with symbols :
 Demo
 =============        
 
-See Index.java and Index.tml in tapestry-mongo-demo
+See Index.java and Index.tml in tapestry-mongo-demo (use Servlet container such as Tomcat). 
+
+http://localhost:8080/tapestry-mongo-demo/{id} (where {id} is a number)
+
+The form will create a document for example :
+
+{ "_id" : NumberLong(22), "user" : { "name" : "john", "age" : 22, "comments" : "nothing", "gender" : "MALE", "car" : true, "moto" : false }, "address" : { "country" : "FR" } }
+
 
 Components
 =============
