@@ -91,9 +91,17 @@
 					</div>
 				</div>
 				
-				 <m:mongoformfragment t:id="seperateShippingAddress" t:document="document" t:property="account.card" t:visible="'VISA'">
-				 	aaa
-				 </m:mongoformfragment>
+				<div class="row">
+					<m:mongoformfragment class="row" t:id="seperateShippingAddress" t:document="document" t:property="account.card" t:visible="'VISA'">
+						<div class="col-md-6">
+							<m:mongoLabel t:for="expiration"/>
+						</div>
+						<div class="col-md-6">
+							<m:MongoTextField class="form-control" autocomplete="off" t:id="expiration" t:label="expiration" 
+								t:document="document" t:translate="string" t:validate="required" t:property="account.expiration"/>
+						</div>
+					 </m:mongoformfragment>
+				</div>
 				
 				<div class="row">
 					<div class="col-md-12">
