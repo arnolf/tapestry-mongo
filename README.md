@@ -19,12 +19,18 @@ Components
 
 ###MongoTextField
 
+        <m:MongoTextField autocomplete="off" t:id="age" t:label="Age"
+                t:document="document" t:translate="integer" t:validate="required" t:property="user.age"/>
 
 ###MongoTextArea
 
-
+        <m:MongoTextArea class="form-control" autocomplete="off" t:id="comments" t:label="Comments"
+                t:document="document" t:translate="string" t:validate="required" t:property="user.comments"/>
+     
 ###MongoSelect
 
+        <m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country"                                     t:model="literal:FR=france,IT=italy"
+                :document="document" t:validate="none" t:property="country"/>
 
 ###MongoCheckbox
 
