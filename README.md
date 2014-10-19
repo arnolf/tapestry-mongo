@@ -14,6 +14,12 @@ In your AppModule, configure Mongo connection with symbols :
                 configuration.add(MongoSymbolConstants.READ_PREFERENCE, ReadPreference.primaryPreferred().toString());
         }
         
+        
+Demo
+=============        
+
+See Index.java and Index.tml in tapestry-mongo-demo
+
 Components
 =============
 
