@@ -46,10 +46,10 @@ public abstract class AbstractMongoField {
 
 	}
 
-    @SetupRender
-    public void initFormAction() {
-    	formSupport.store(this, new RestoreProperty(property));
-    }
+	@SetupRender
+	public void initFormAction() {
+		formSupport.store(this, new RestoreProperty(property));
+	}
 	
 	public void restore(String propertyToRestore) {
 		this.restoredProperty = propertyToRestore;
