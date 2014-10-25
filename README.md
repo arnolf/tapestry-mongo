@@ -14,12 +14,25 @@ In your AppModule, configure Mongo connection with symbols :
                 configuration.add(MongoSymbolConstants.READ_PREFERENCE, ReadPreference.primaryPreferred().toString());
         }
         
+        
+Demo
+=============        
+
+See Index.java and Index.tml in tapestry-mongo-demo (use Servlet container such as Tomcat). 
+
+http://localhost:8080/tapestry-mongo-demo/{id} (where {id} is a number)
+
+The form will create a document for example :
+
+{ "_id" : NumberLong(22), "user" : { "name" : "john", "age" : 22, "comments" : "nothing", "gender" : "MALE", "car" : true, "moto" : false }, "address" : { "country" : "FR" } }
+
+
 Components
 =============
 
 ###MongoTextField
 
-        <m:MongoTextField autocomplete="off" t:id="age" t:label="Age"
+        <m:MongoTextField class="form-control" autocomplete="off" t:id="age" t:label="Age"
                 t:document="document" t:translate="integer" t:validate="required" t:property="user.age"/>
 
 ###MongoTextArea
@@ -29,23 +42,42 @@ Components
      
 ###MongoSelect
 
-        <m:MongoSelect t:id="country" t:label="country" t:blankLabel="country"                                                          t:model="literal:FR=france,IT=italy"
-                t:document="document" t:validate="none" t:property="country"/>
+        <m:MongoSelect class="form-control" t:id="country" t:label="country" t:blankLabel="country"                                     t:model="literal:FR=france,IT=italy"
+                t:document="document" t:validate="none" t:property="address.country"/>
 
 ###MongoCheckbox
 
         <m:MongoCheckbox t:id="car" t:label="car"
-                t:document="document" t:property="user.car"/>
+                t:document="document" t:property="car"/>
 
 ###MongoRadioGroup
-
+        
+        <m:MongoRadioGroup t:id="gender" t:label="Gender" t:default="FEMALE" t:document="document" t:validate="required" t:property="user.gender">
+			<t:Radio autocomplete="off" t:id="men" value="literal:MALE"/>
+			<t:Radio autocomplete="off" t:id="female" value="literal:FEMALE"/>
+        </m:MongoRadioGroup>
 
 ###MongoLabel
-
+	
+	<m:mongoLabel t:for="age"/>
+        <m:MongoTextField class="form-control" autocomplete="off" t:id="age" t:label="Age"
+                t:document="document" t:translate="integer" t:validate="required" t:property="user.age"/>
 
 ###MongoFormFragment
+
+To use with MongoTriggerFragmentMixin
+
+	<m:mongoformfragment class="row" t:id="maidenNameFragment" t:document="document" t:property="user.gender" t:visible="[null,'FEMALE']"/>
+		[...other fields...]
+	</m:mongoformfragment>
+
+
 
 Mixins
 =============
 
 ###MongoTriggerFragment
+
+	<t:Radio autocomplete="off" t:id="female" value="literal:FEMALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment"/>
+
+	<t:Radio autocomplete="off" t:id="men" value="literal:MALE" t:mixins="mongo/mongotriggerfragment" t:fragment="maidenNameFragment" t:invert="true"/>
