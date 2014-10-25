@@ -1,5 +1,5 @@
 <t:container xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd">
- 	<t:formFragment t:id="fragment" t:visible="visible" t:show="display" t:hide="hide">
+ 	<t:formFragment t:id="fragment" t:visible="visible" t:element="inherit:element" t:show="display" t:hide="hide">
  		<t:body/>
  	</t:formFragment>
 </t:container>

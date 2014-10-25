@@ -15,14 +15,20 @@ import com.mongodb.DBObject;
 @Import(library = "classpath:org/arnolf/tapestry/mongo/components/MongoFormFragment.js")
 public class MongoFormFragment {
 
-	@Component(id = "fragment", inheritInformalParameters = true, publishParameters = "alwaysSubmit,element,visibleBound")
+	@Component(id = "fragment", inheritInformalParameters = true, publishParameters = "alwaysSubmit,visibleBound")
 	private FormFragment fragment;
 	
 	@Parameter(allowNull = false, required = true, defaultPrefix = BindingConstants.LITERAL)
 	private String property;
 	
+	@Parameter(allowNull = false, required = false, defaultPrefix = BindingConstants.LITERAL)
+	private String element;
+	
 	@Parameter(allowNull = false, required = true, defaultPrefix = BindingConstants.PROP)
 	private List<Object> visible;
+	
+	@Parameter(allowNull = false, required = false, defaultPrefix = BindingConstants.LITERAL)
+	private boolean forceVisible;
 	
 	@Parameter(allowNull = false, required = true)
 	private DBObject document;
@@ -31,6 +37,9 @@ public class MongoFormFragment {
 	private MongoService mongoService;
 	
 	public Object getVisible() {
+		if (forceVisible) {
+			return true;
+		}
 		Object result = mongoService.getProperty(document, property);
 		return visible.contains(result);
 	}

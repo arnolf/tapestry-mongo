@@ -13,6 +13,7 @@
 			.row {
 				padding-top: 25px;
 			}
+			
 		</style>
 	</head>
 	<body>
@@ -104,13 +105,27 @@
 							t:document="document" t:property="moto"/>
 					</div>
 				</div>
+
+				<m:mongoformloop t:max="7" t:element="ul" t:document="document" t:property="user.address" t:index="index" t:add="add" t:remove="remove">
+					<li>${index} 						
+						<m:MongoTextField class="form-control" autocomplete="off" t:id="names" t:label="Name" 
+							t:document="document" t:translate="string" t:validate="required" t:property="user.address${index}.city"/>
+					</li>
+				</m:mongoformloop>
+				
+				<m:mongoaddlink t:id="add"/>
+				<m:mongoremovelink t:id="remove"/>
 				
 				<div class="row">
 					<div class="col-md-12">
 						<t:submit class="btn btn-default"/>
 					</div>
 				</div>
+				
+
 			</t:form>
+			
+
 		</div>
 	</body>
 </html>

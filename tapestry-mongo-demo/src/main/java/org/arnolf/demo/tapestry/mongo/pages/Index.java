@@ -24,6 +24,9 @@ public class Index {
 	@Property
 	private boolean separateShipTo;
 	
+	@Property
+	private int index;
+	
 	private long userId;
 	
 	public void onActivate(long userId) {
