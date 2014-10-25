@@ -31,21 +31,21 @@ public abstract class AbstractMongoField {
 	
 	private String restoredProperty;
 
-    static class RestoreProperty implements ComponentAction<AbstractMongoField>, Serializable {
-        private static final long serialVersionUID = -4346426414137434418L;
+	static class RestoreProperty implements ComponentAction<AbstractMongoField>, Serializable {
+		private static final long serialVersionUID = -4346426414137434418L;
 
-        private String property;
-        
-        public RestoreProperty(String property) {
-        	this.property = property;
-        }
-        
-        public void execute(AbstractMongoField component) {
-            component.restore(property);
-        }
+		private String property;
 
-    }
-    
+		public RestoreProperty(String property) {
+			this.property = property;
+		}
+
+		public void execute(AbstractMongoField component) {
+			component.restore(property);
+		}
+
+	}
+
     @SetupRender
     public void initFormAction() {
     	formSupport.store(this, new RestoreProperty(property));
