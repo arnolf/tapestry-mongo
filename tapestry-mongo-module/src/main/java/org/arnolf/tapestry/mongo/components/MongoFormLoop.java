@@ -110,11 +110,6 @@ public class MongoFormLoop {
 		this.counter = this.counter + 1;
 	}
 	
-	@AfterRenderTemplate
-	public void retrieveInjectorId() {
-		this.injectorIds.add(injector.getClientId());
-	}
-	
 	public Block onInject(int i) {
 		this.index = i;
 		return mainBlock;
@@ -122,6 +117,7 @@ public class MongoFormLoop {
 	
 	@AfterRenderTemplate
 	public boolean afterRenderTemplate() {
+		this.injectorIds.add(injector.getClientId());
 		return this.max < this.index;
 	}
 	
