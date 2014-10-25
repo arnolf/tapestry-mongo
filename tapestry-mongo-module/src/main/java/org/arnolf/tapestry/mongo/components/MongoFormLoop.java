@@ -72,20 +72,21 @@ public class MongoFormLoop {
 	@Inject
 	private MongoService mongoService;
 	
-    static class RemoveProperty implements ComponentAction<MongoFormLoop>, Serializable {
-        private static final long serialVersionUID = -4346426414137434418L;
+	static class RemoveProperty implements ComponentAction<MongoFormLoop>, Serializable {
+		
+		private static final long serialVersionUID = -4346426414137434418L;
 
-        private String property;
-        
-        public RemoveProperty(String property) {
-        	this.property = property;
-        }
-        
-        public void execute(MongoFormLoop component) {
-            component.remove(property);
-        }
+		private String property;
 
-    }
+		public RemoveProperty(String property) {
+			this.property = property;
+		}
+
+		public void execute(MongoFormLoop component) {
+			component.remove(property);
+		}
+
+	}
 	
 	@SetupRender
 	public void init() {
