@@ -8,6 +8,7 @@ import org.apache.tapestry5.BindingConstants;
 import org.apache.tapestry5.Block;
 import org.apache.tapestry5.ComponentAction;
 import org.apache.tapestry5.annotations.AfterRender;
+import org.apache.tapestry5.annotations.AfterRenderBody;
 import org.apache.tapestry5.annotations.AfterRenderTemplate;
 import org.apache.tapestry5.annotations.BeforeRenderTemplate;
 import org.apache.tapestry5.annotations.HeartbeatDeferred;
@@ -104,14 +105,14 @@ public class MongoFormLoop {
 		formSupport.store(this, new RemoveProperty(property.concat(String.valueOf(index))));
 	}
 	
+	@AfterRenderBody
+	public void incrementCounter() {
+		this.counter = this.counter + 1;
+	}
+	
 	@AfterRenderTemplate
 	public void retrieveInjectorId() {
 		this.injectorIds.add(injector.getClientId());
-	}
-	
-	public int getCounter() {
-		this.counter = this.counter + 1;
-		return this.counter;
 	}
 	
 	public Block onInject(int i) {

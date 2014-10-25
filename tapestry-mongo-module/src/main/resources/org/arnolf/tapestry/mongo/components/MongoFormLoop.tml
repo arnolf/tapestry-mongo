@@ -3,7 +3,6 @@
  	 <m:mongoIf t:document="inherit:document" t:property="${property}${index}">
  		<m:mongoformFragment t:element="inherit:element" t:document="inherit:document" t:property="inherit:property" t:forceVisible="true" t:visible="['null']">
  			 <t:body/>
- 			 <div style="display:none;">${counter}</div>
  		</m:mongoformFragment>
  	</m:mongoIf>
  	
